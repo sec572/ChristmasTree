@@ -1,0 +1,21 @@
+Console Christmas Tree
+
+This program was written for fun to simply draw a Christmas Tree on the console.
+
+Compiling:
+
+make
+
+Running:
+
+./xmastree
+
+Running the command with no arguments as provided above will draw a tree with a
+length of 7.
+
+./xmastree <length>
+
+Running the command with a length will draw the tree to the specified length.
+The length must range between 5-31. It must step up by two starting from 5. For
+example 5, 7, 9, 11, 13, ... 31.
+
