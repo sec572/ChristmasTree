@@ -19,3 +19,12 @@ Running the command with a length will draw the tree to the specified length.
 The length must range between 5-31. It must step up by two starting from 5. For
 example 5, 7, 9, 11, 13, ... 31.
 
+Optional Debug Mode:
+
+You can also compile in debug mode. When compiling in this mode, the system will
+ print out some of the coordinates and offset values that will be used to print 
+the tree to screen.
+
+To build in debug mode, simply run:
+
+make debug

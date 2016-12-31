@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/ioctl.h>
 
 /*
 	Author:		Eddie N. <en@sector572.com>
@@ -10,7 +11,7 @@
 			on the console.
 */
 
-void printTree(int size);
+void printTree(int size, int offset);
 void printSpaces(int length);
 void printBranch(int spaces, int length);
 void printTrunk(int spaces, int length);
@@ -22,7 +23,34 @@ int main(int argc, char* argv[])
 	int sizeTmp = 0;
 	int minSize = 5;
 	int maxSize = 31;
+	int offset = 10;
 	int tmp = 0;
+	unsigned short columns = 80;
+	struct winsize wSz;
+	unsigned short halfSize = 0;
+
+	if(ioctl(0, TIOCGWINSZ, &wSz) == 0)
+	{
+		columns = wSz.ws_col;
+	}
+
+	/* Determine terminal column mid point. */
+
+/*	if(columns % 2 == 0)
+	{
+		halfSize = columns / 2 - 1;
+	}
+	else
+	{
+		halfSize = (columns - 1) / 2 - 1;
+	}
+*/
+	halfSize = columns / 2;
+
+	#ifdef _DEBUG_
+	printf("Columns: %d\n", columns);
+	printf("Column Midpoint: %d\n", halfSize);
+	#endif
 
 	if(argc == 2)
 	{
@@ -56,16 +84,23 @@ int main(int argc, char* argv[])
 
 	if(!rtn)
 	{
-		printTree(size);
+		/* Calculate white space offset. */
+		offset = halfSize - (size / 2) - 1;
+
+		#ifdef _DEBUG_
+		printf("Tree size: %d\n", size);
+		printf("Offset: %d\n", offset);
+		#endif
+
+		printTree(size, offset);
 	}
 
 	return rtn;
 }
 
-void printTree(int size)
+void printTree(int size, int offset)
 {
 	int i, j, s, m, t;
-	int offset = 10;
 
 	i=j=s=m=0;
 
