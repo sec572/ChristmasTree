@@ -6,7 +6,7 @@
 	Author:		Eddie N. <en@sector572.com>
 	Date:		2016-12-30
 	Filename:	xmas_tree.c
-	Version:	0.1.0
+	Version:	0.2.0
 	Description:	This program accepts an integer and draws an ascii tree
 			on the console.
 */
