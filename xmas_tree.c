@@ -12,6 +12,8 @@
 
 void printTree(int size);
 void printSpaces(int length);
+void printBranch(int spaces, int length);
+void printTrunk(int spaces, int length);
 
 int main(int argc, char* argv[])
 {
@@ -74,22 +76,13 @@ void printTree(int size)
 
 	for(i = 0; i < size; i += 2)
 	{
-		printSpaces(offset);
-		printSpaces(m);
-
-		for(j = 0; j < i + 1; j++)
-		{
-			printf("*");
-		}
-
-		printf("\n");
+		printBranch(offset + m,
+			    i + 1);
 		m--;
 	}
 
-	printSpaces(offset);
-	printSpaces(t);
+	printTrunk(offset + t, 1);
 
-	printf("|\n");
 	printf("\n");
 }
 
@@ -100,5 +93,31 @@ void printSpaces(int length)
 	for(i = 0; i < length; i++)
 	{
 		printf(" ");
+	}
+}
+
+void printBranch(int spaces, int length)
+{
+	int i = 0;
+
+	printSpaces(spaces);
+
+	for(i = 0; i < length; i++)
+	{
+		printf("*");
+	}
+
+	printf("\n");
+}
+
+void printTrunk(int spaces, int length)
+{
+	int i = 0;
+
+	printSpaces(spaces);
+
+	for(i = 0; i < length; i++)
+	{
+		printf("|\n");
 	}
 }
