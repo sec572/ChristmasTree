@@ -52,15 +52,6 @@ int main(int argc, char* argv[])
 
 	/* Determine terminal column mid point. */
 
-/*	if(columns % 2 == 0)
-	{
-		halfSize = columns / 2 - 1;
-	}
-	else
-	{
-		halfSize = (columns - 1) / 2 - 1;
-	}
-*/
 	halfSize = columns / 2;
 
 	#ifdef _DEBUG_
